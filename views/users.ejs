@@ -1,0 +1,13 @@
+
+<% include partials/header %>
+
+
+
+<%users.map((user)=>{ %>
+  <div class="user-wrapper">
+<h3><a href="profiles/<%= user.id %>"> <%= user.username %></a></h3>
+</div>
+
+<% }) %>
+
+<% include partials/footer %>

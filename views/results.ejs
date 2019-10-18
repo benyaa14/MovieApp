@@ -1,0 +1,53 @@
+<% include partials/header %>
+
+<div class = "container">
+	<header class = "jumbotron">
+			<h1>Results Page</h1>
+			<h2>Your search is: <%= query %></h2>
+		<p><a class = "btn btn-primary btn-large" href="/">Search a Movie</a></p> 
+	</header>	
+	
+		<div class="row text-center" style="display:flex;flex-wrap:wrap">
+		<%if(data["Search"]!= undefined){ %>
+			<%	data["Search"].forEach(function(movie){ %>
+		<div class="col-md-3 col-sm-6">
+			<div class="thumbnail">	
+					<% if(movie["Poster"]==="N/A" ||movie["Poster"]==NaN){%>
+					<% movie["Poster"]="https://pixel.nymag.com/imgs/fashion/daily/2018/11/02/2-empty-movie-theatre.w700.h700.jpg"%>	
+					<%}%>
+					<img src=<%= movie["Poster"]%>>
+					<div class="caption">
+						<p><strong><%= movie["Title"] %></strong> - <%= movie["Year"]%></p>
+					</div>
+						<form action = "/user" method = "POST">
+							<p>Rate 1-10:</p>
+							<select class="form-control" name="rating">
+							  <option>1</option>
+							  <option>2</option>
+							  <option>3</option>
+							  <option>4</option>
+							  <option>5</option>
+								<option>6</option>
+							  <option>7</option>
+							  <option>8</option>
+							  <option>9</option>
+							  <option>10</option>
+							</select>
+						<input type="text" name="id" value="<%= movie["imdbID"]%>" />
+						<input type="text" name="title" value="<%= movie["Title"]%>" />
+						<input type="text" name="year" value="<%= movie["Year"]%>">
+						<input type="text" name="img" value="<%= movie["Poster"]%>"/>
+						<button class = "btn btn-lg btn-primary btn-block">Add To Your Ratings</button>							
+						</form>
+					</div>
+			</div>
+		
+
+			<% }) %>
+			</div>	
+				<%}else{ %>
+					<h4>Something went wrong. Please search again</h4>
+				<%}%>
+	</div>	
+
+<% include partials/footer %>

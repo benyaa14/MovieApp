@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FMDb</title>
+		<link rel="stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	</head>
+	<body>
+		 <% include navbar%>
+    
+    <div class = "container">
+        <% if(error && error.length>0){%>
+        <div class ="alert alert-danger" role = "alert"> <%= error %> </div>
+    </div>
+    <%}%>
+    <% if(success && success.length>0){%>
+    <div class = "container">
+            <div class ="alert alert-success" role = "alert"> <%= success %> </div>
+        </div>
+        <%}%>
+		
+		
+	

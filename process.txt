@@ -1,0 +1,13 @@
+#The FMDb
+1. login page as an acount
+2. profile page:photo,friends, wached movies+rating, search for a movie.
+3. search page
+4. results page: 10 movies+FMDb rating, click to see the IMDb page
+
+USERS:
+username			password
+-----------------------------
+ben					1234
+
+changes:
+1. user.js - added "/profiles/:id" to the post

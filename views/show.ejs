@@ -1,0 +1,53 @@
+<% include partials/header %>
+<div class="container">
+	<header class="jumbotron">
+		<div class = "container">
+			<h1>
+				<%= user.username%>'s rates
+			</h1>
+			<p>
+			<a class="btn btn-primary btn-large" href="/">Search a new movie</a>
+			</p>
+		</div>
+	</header>
+
+	
+	<div class="row text-center" style="display:flex;flex-wrap:wrap">
+		<div class="friends-wrapper" >
+         <div class="friends-card" >
+			
+		 </div>
+
+
+
+		</div>
+	
+		<%ratedMovies.forEach(function(movie){%>
+		<%if(user.username == movie.userRating.username){%>
+		<div class = "col-md-3 col-sm-6">
+			<div class = "thumbnail">
+				
+				<img src=<%= movie.img%>>
+				<div class = "caption">
+				<p>
+				<strong><%=movie.title%></strong>- <%=movie.year%>. <em>rate : <%=movie.rating%></em> 	  
+				</p>
+					<p>
+						<a href = "https://www.imdb.com/title/<%=movie.id%>"  target="_blank">IMDb page</a>
+						</p>
+						<p>
+							username:<a href="/profiles/<%= movie.userRating.userId%>"> <%= movie.userRating.username%></a>
+						</p>
+						<%if(currentUser){%>
+						<% if(movie.userRating.userId.equals(currentUser._id)){%>
+						<form action="/user/<%= movie._id %>?_method=DELETE" method = "POST">
+							<button class = "btn btn-xs btn-danger">Delete</button> 
+						</form>
+							<%}}%>	
+					</div>		
+			</div>
+		</div>
+		<%}})%>
+	</div>
+</div>
+<% include partials/footer %>
