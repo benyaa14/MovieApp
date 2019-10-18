@@ -17,7 +17,8 @@ var indexRoutes = require("./routes/index");
 
 
 
-mongoose.connect("mongodb+srv://benyaa14:12345@cluster0-s0d5e.mongodb.net/test?retryWrites=true&w=majority");
+// mongoose.connect("mongodb+srv://benyaa14:12345@cluster0-s0d5e.mongodb.net/test?retryWrites=true&w=majority");
+mongoose.connect("mongodb://benyaa14:benyaa14@ds137008.mlab.com:37008/movie_app")
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
